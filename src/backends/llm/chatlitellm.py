@@ -43,7 +43,7 @@ class LLM(ChatLiteLLM):
             # Check for cancellation before making the request
             if cancellation_event and cancellation_event.is_set():
                 raise CancellationError("Request was cancelled before LLM call")
-            return await self.client.acompletion(num_ctx=self.num_ctx, **kwargs)
+            return await self.client.acompletion(**kwargs)
 
         return await _completion_with_retry(**kwargs)
 
